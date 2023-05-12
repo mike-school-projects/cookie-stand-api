@@ -4,6 +4,8 @@ from pathlib import Path
 # ENV setup
 env = environ.Env(
     DEBUG=(bool, False),
+    ALLOW_ALL_ORIGINS=(bool, False),
+    ALLOWED_HOSTS=(list, []),
 )
 environ.Env.read_env()
 
@@ -38,9 +40,11 @@ INSTALLED_APPS = [
     # 3rd Party
     'rest_framework',
     'whitenoise',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -143,3 +147,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ],
 }
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000',]
+
+CORS_ALLOW_ALL_ORIGINS = env.bool("ALLOW_ALL_ORIGINS")
+CORS_ALLOWED_ORIGINS = [ 'HTTP://LOCALHOST:3000',]
+CORS_ALLOWED_METHODS = ['GET', 'POST',]
+CORS_ALLOWED_HEADERS = [ 'X-CSRFToken', 'Content-Type', ]
