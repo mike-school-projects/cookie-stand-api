@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # Docs say to put cors as high as possible.  But, it works both at top or at bottom.
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -147,9 +148,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     ],
 }
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000',]
 
+# CSRF_TRUSTED_ORIGINS = ['http://localhost:3000',]
+# CORS_ALLOWED_ORIGINS = [ 'HTTP://LOCALHOST:3000',]
+# CORS_ALLOWED_METHODS = ['GET', 'POST',]
+# CORS_ALLOWED_HEADERS = [ 'X-CSRFToken', 'Content-Type', ]
+
+# Fixes blocked by CORS policy: No 'Access-Control_Allow_Origin' header is present
 CORS_ALLOW_ALL_ORIGINS = env.bool("ALLOW_ALL_ORIGINS")
-CORS_ALLOWED_ORIGINS = [ 'HTTP://LOCALHOST:3000',]
-CORS_ALLOWED_METHODS = ['GET', 'POST',]
-CORS_ALLOWED_HEADERS = [ 'X-CSRFToken', 'Content-Type', ]
+

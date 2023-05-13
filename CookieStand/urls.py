@@ -6,7 +6,6 @@ from .views import MyTokenObtainPairView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('cookie_stands.urls')),
 
     # Redirect URL
     path('', lambda req: redirect('api/v1/app/')),
