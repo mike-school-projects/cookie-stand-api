@@ -159,8 +159,8 @@ SIMPLE_JWT = {
 
 # CSRF_TRUSTED_ORIGINS = ['http://localhost:3000',]
 # CORS_ALLOWED_ORIGINS = [ 'HTTP://LOCALHOST:3000',]
-# CORS_ALLOWED_METHODS = ['GET', 'POST',]
-# CORS_ALLOWED_HEADERS = [ 'X-CSRFToken', 'Content-Type', ]
+CORS_ALLOWED_METHODS = ['GET', 'POST',]
+CORS_ALLOWED_HEADERS = [ 'X-CSRFToken', 'Content-Type', ]
 
 # Fixes blocked by CORS policy: No 'Access-Control_Allow_Origin' header is present
 CORS_ALLOW_ALL_ORIGINS = env.bool("ALLOW_ALL_ORIGINS")
