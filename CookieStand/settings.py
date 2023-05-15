@@ -1,5 +1,6 @@
 import environ
 from pathlib import Path
+from datetime import timedelta
 
 # ENV setup
 env = environ.Env(
@@ -147,6 +148,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ],
+}
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(
+        seconds=60 * 60
+    ),  # lasts for 60 minutes
 }
 
 # CSRF_TRUSTED_ORIGINS = ['http://localhost:3000',]
